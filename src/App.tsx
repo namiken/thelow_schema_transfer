@@ -1,10 +1,19 @@
 
 import './App.css'
 import UploadForm from './upload'
+import {
+    QueryClient,
+    QueryClientProvider,
+    useQuery,
+} from 'react-query';
+
+const queryClient = new QueryClient();
 
 function App() {
     return (
-        <UploadForm></UploadForm>
+        <QueryClientProvider client={queryClient}>
+            <UploadForm></UploadForm>
+        </QueryClientProvider>
     )
 }
 
