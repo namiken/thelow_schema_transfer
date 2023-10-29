@@ -1,6 +1,6 @@
 
 import nbt from 'prismarine-nbt'
-import { SchemaInfo } from './schemainfo.tsx'
+import { SchemaInfo } from './schemainfo'
 
 
 export const readNbt = async (data: Buffer): Promise<SchemaInfo | "error"> => {

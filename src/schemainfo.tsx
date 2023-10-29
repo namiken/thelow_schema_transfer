@@ -6,8 +6,11 @@ export type SchemaInfo = {
 import { Container, Paper, Typography, Table, TableContainer, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
 
 
-export const SchemaInfoDisplay = (props: { schemaInfo: SchemaInfo, filename: string }) => {
+export const SchemaInfoDisplay = (props: { schemaInfo: SchemaInfo | undefined, filename: string }) => {
     const schemaInfo = props.schemaInfo;
+    if (!schemaInfo) {
+        return (<>ファイルが存在しません</>);
+    }
     return (
         <Container maxWidth="lg" sx={{ mt: 2 }}>
             <Typography variant="h5" gutterBottom>
