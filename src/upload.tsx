@@ -18,6 +18,14 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { CustomSnackbar } from './CustomSnackbar';
 
 const { Buffer } = require('buffer');
+import https from 'https';
+
+//オレオレ証明書を使っているため、証明書の検証をスキップする
+const instance = axios.create({
+  httpsAgent: new https.Agent({
+    rejectUnauthorized: false,
+  }),
+});
 
 const UploadForm = () => {
   const [fileContent, setFileContent] = useState<{
@@ -30,10 +38,10 @@ const UploadForm = () => {
   const [progress, setProgress] = useState<number>(0);
   const mutation = useMutation(async (mcid: string) => {
     const postUrl =
-      'http://157.65.26.175:13004/schema/' + fileContent?.filename;
+      'https://mc.eximradar.jp:13004/schema/' + fileContent?.filename;
 
     // POSTリクエストを実行
-    const response = await axios.post(postUrl, {
+    const response = await instance.post(postUrl, {
       schema: fileContent?.base64,
       mcid,
     });
