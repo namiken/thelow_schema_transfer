@@ -38,7 +38,7 @@ const UploadForm = () => {
   const [progress, setProgress] = useState<number>(0);
   const mutation = useMutation(async (mcid: string) => {
     const postUrl =
-      'https://mc.eximradar.jp:13004/schema/' + fileContent?.filename;
+      'https://157.65.26.175:13004/schema/' + fileContent?.filename;
 
     // POSTリクエストを実行
     const response = await instance.post(postUrl, {
